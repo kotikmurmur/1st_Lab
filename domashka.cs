@@ -12,22 +12,12 @@ Console.WriteLine(s);
 
 
 #region task 1.9
-int p=1;
- static long Fact(long n) {
-  if(n == 0)
-    return 1;
-  else
-    return n * Fact(n - 1);
+double a=1,s=0;
+for(int i=1;i<=6;i++){
+a*=i;
+s+=(Math.Pow(-1,i)*Math.Pow(5,i))/a;
 }
-
-    double s=Math.Pow(-1, p)*Math.Pow(5, p) / Convert.ToDouble(Fact(p));
-    while(p<7){
-        p++;
-        s+=s;
-        
-    }
-    Console.WriteLine(s);
-    
+Console.WriteLine(s);
 
 #endregion 
 #region 1.15
@@ -67,16 +57,14 @@ int s = 10;
 }
 #endregion 
 #region 2.2
-int p=1;
-for(int i=4;i<100000;i+=3 ){
-     if(p*i < 30000){
-        p*=i;
-     }
-     else{
-        break;
-     }
-     Console.WriteLine(i); //last num is the answer
-}
+double p=1;
+int n=1;
+const double L=30000;
+do{
+n+=3;
+p*=n;
+} while(p<L);
+Console.WriteLine($"{n-=3}");
 #endregion 
 #region 2.4
 // -1<x<1
@@ -148,4 +136,21 @@ for (double a = 0.1; a < 1; a += 0.1){
     y = Math.Cos(a);
     Console.WriteLine($"x = {a}; s = {s};  y = {y}");
 }
+#endregion
+#region 3.9
+double s,x,y,c,n;
+const double eps=0.0001;
+for(x=0.1;x<=0.5;x+=0.5){
+s=0;
+c=0.1;
+n=1;
+while(Math.Abs(c)>=eps){
+s+=c;
+c*=(-1)*Math.Pow(x,2)*(2*n-1)/(2*n+1);
+n+=1;
+}
+y=Math.Atan(x);
+Console.WriteLine($"s={s:f4}, y={y:f4}");
+}
+
 #endregion
